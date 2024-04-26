@@ -4,8 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../../styles/color';
 import { Button, useTheme } from 'react-native-paper';
 import { getFontSize } from '@/utils/getFontSize';
+import { OnBoardingNavProps } from '@/navigators/AuthStack';
 
-const OnboardingScreen = () => {
+const OnboardingScreen = ({ navigation }: OnBoardingNavProps) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -13,6 +14,7 @@ const OnboardingScreen = () => {
           mode="contained"
           textColor={colors.white}
           style={[styles.buttonBordered, { borderColor: colors.white, marginBottom: 16 }]}
+          onPress={() => navigation.navigate('Login')}
         >
           Log in
         </Button>
