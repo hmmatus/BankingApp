@@ -15,6 +15,7 @@ export const theme = {
   ...MD3LightTheme,
   colors: {
     primary: colors.primary.main,
+    white: colors.white,
   },
   fonts: configureFonts({ config: fontConfig }),
 };
