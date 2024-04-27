@@ -23,6 +23,7 @@ const OnboardingScreen = ({ navigation }: OnBoardingNavProps) => {
           buttonColor={colors.white}
           style={[styles.buttonBordered, { borderColor: colors.white }]}
           labelStyle={styles.buttonText}
+          onPress={() => navigation.navigate('SignUp')}
         >
           Sign in
         </Button>

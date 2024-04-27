@@ -10,6 +10,7 @@ import { LoginNavProps } from '@/navigators/AuthStack';
 import InputText from '@/components/elements/form/input/InputText';
 import InputPassword from '@/components/elements/form/input/InputPassword';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
+import { authStyles } from './styles/authStyles';
 
 const LoginScreen = ({ navigation }: LoginNavProps) => {
   const [email, setEmail] = useState('');
@@ -17,9 +18,9 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
   return (
     <SimpleOverlappedLayout>
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>Welcome Back</Text>
-        <Text style={styles.subtitle}>Hello there, sign in to continue</Text>
-        <View style={styles.imageContainer}>
+        <Text style={authStyles.title}>Welcome Back</Text>
+        <Text style={authStyles.subtitle}>Hello there, sign in to continue</Text>
+        <View style={authStyles.imageContainer}>
           <LoginImage width={horizontalScale(213)} height={verticalScale(175)} />
         </View>
         <View>
@@ -44,14 +45,17 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
           >
             Sign in
           </Button>
-          <View style={[styles.imageContainer, { marginVertical: verticalScale(24) }]}>
+          <View style={[authStyles.imageContainer, { marginVertical: verticalScale(24) }]}>
             <FingerprintImage />
           </View>
           <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
             <Text style={{ fontSize: getFontSize(12), color: colors.neutral.main }}>
               Don't have an account?{' '}
             </Text>
-            <Text style={{ color: colors.primary.main, fontWeight: '700' }} onPress={() => {}}>
+            <Text
+              style={{ color: colors.primary.main, fontWeight: '700' }}
+              onPress={() => navigation.navigate('SignUp')}
+            >
               Sign Up
             </Text>
           </View>
@@ -65,23 +69,6 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: horizontalScale(16),
     paddingBottom: verticalScale(16),
-  },
-  title: {
-    fontSize: getFontSize(28),
-    fontWeight: 'bold',
-    color: colors.primary.main,
-  },
-  subtitle: {
-    fontSize: getFontSize(16),
-    color: colors.neutral.main,
-    fontWeight: '500',
-  },
-  imageContainer: {
-    width: '100%',
-    maxHeight: '40%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: verticalScale(16),
   },
   forgotPasswordText: {
     color: colors.neutral.third,

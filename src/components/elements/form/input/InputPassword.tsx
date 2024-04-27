@@ -19,7 +19,7 @@ const InputPassword = (props: TextInputProps) => {
         />
       }
       theme={{ roundness: 16 }}
-      style={{ marginBottom: 16, backgroundColor: 'transparent' }}
+      style={{ backgroundColor: 'transparent' }}
       outlineColor={props.outlineColor ?? colors.neutral.light}
       secureTextEntry={!showPassword}
     />
