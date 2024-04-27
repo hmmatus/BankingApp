@@ -5,8 +5,11 @@ import { getFontSize } from '@/utils/getFontSize';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LoginImage from '@/assets/images/login-logo.svg';
 import FingerprintImage from '@/assets/images/fingerprint.svg';
-import { Button, TextInput } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import { LoginNavProps } from '@/navigators/AuthStack';
+import InputText from '@/components/elements/form/input/InputText';
+import InputPassword from '@/components/elements/form/input/InputPassword';
+import { horizontalScale, verticalScale } from '@/helpers/metrics';
 
 const LoginScreen = ({ navigation }: LoginNavProps) => {
   const [email, setEmail] = useState('');
@@ -17,29 +20,17 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
         <Text style={styles.title}>Welcome Back</Text>
         <Text style={styles.subtitle}>Hello there, sign in to continue</Text>
         <View style={styles.imageContainer}>
-          <LoginImage />
+          <LoginImage width={horizontalScale(213)} height={verticalScale(175)} />
         </View>
-        <View style={styles.formContainer}>
-          <TextInput
-            mode="outlined"
+        <View>
+          <InputText
             label="User"
             placeholder="User"
-            theme={{ roundness: 16, colors: { primary: colors.primary.main } }}
-            style={{ marginBottom: 16 }}
+            style={{ marginBottom: verticalScale(16) }}
             value={email}
             onChangeText={(val) => setEmail(val)}
           />
-          <TextInput
-            mode="outlined"
-            label="Password"
-            placeholder="Password"
-            right={<TextInput.Icon icon="eye" />}
-            value={password}
-            theme={{ roundness: 16 }}
-            style={{ marginBottom: 16, backgroundColor: 'transparent' }}
-            onChangeText={(val) => setPassword(val)}
-            secureTextEntry
-          />
+          <InputPassword value={password} onChangeText={(val) => setPassword(val)} />
           <TouchableOpacity style={{ alignSelf: 'flex-end' }} onPress={() => {}}>
             <Text style={styles.forgotPasswordText}>Forgot your password ?</Text>
           </TouchableOpacity>
@@ -47,18 +38,20 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
           <Button
             mode="contained"
             onPress={() => {}}
-            style={{ borderRadius: 16, marginTop: 16 }}
-            contentStyle={{ paddingVertical: 5 }}
+            style={{ borderRadius: 16, marginTop: verticalScale(16) }}
+            contentStyle={{ paddingVertical: verticalScale(5) }}
             labelStyle={{ fontSize: getFontSize(16), color: colors.white }}
           >
             Sign in
           </Button>
-          <View style={styles.imageContainer}>
+          <View style={[styles.imageContainer, { marginVertical: verticalScale(24) }]}>
             <FingerprintImage />
           </View>
           <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
-            <Text>Don't have an account? </Text>
-            <Text style={{ color: colors.primary.main }} onPress={() => {}}>
+            <Text style={{ fontSize: getFontSize(12), color: colors.neutral.main }}>
+              Don't have an account?{' '}
+            </Text>
+            <Text style={{ color: colors.primary.main, fontWeight: '700' }} onPress={() => {}}>
               Sign Up
             </Text>
           </View>
@@ -70,8 +63,8 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    paddingBottom: 16,
+    paddingHorizontal: horizontalScale(16),
+    paddingBottom: verticalScale(16),
   },
   title: {
     fontSize: getFontSize(28),
@@ -88,11 +81,11 @@ const styles = StyleSheet.create({
     maxHeight: '40%',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 16,
+    marginVertical: verticalScale(16),
   },
-  formContainer: {},
   forgotPasswordText: {
     color: colors.neutral.third,
+    marginBottom: verticalScale(16),
   },
 });
 
