@@ -104,7 +104,7 @@ const ForgotPasswordScreen = ({ navigation }: ForgotPasswordNavProps) => {
           phoneValue={phoneNumber}
           value={code}
           onChangeValue={(val) => setCode(val)}
-          onPress={() => setShowCodeCard(true)}
+          onPress={() => navigation.navigate('ChangePassword')}
           onPressResend={() => {}}
         />
       ) : (

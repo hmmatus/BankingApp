@@ -9,7 +9,7 @@ const InputPassword = (props: TextInputProps) => {
       {...props}
       mode="outlined"
       label="Password"
-      placeholder="Password"
+      placeholder={props.placeholder ?? 'Password'}
       right={
         <TextInput.Icon
           icon={showPassword ? 'eye-off' : 'eye'}
@@ -19,7 +19,6 @@ const InputPassword = (props: TextInputProps) => {
         />
       }
       theme={{ roundness: 16 }}
-      style={{ backgroundColor: 'transparent' }}
       outlineColor={props.outlineColor ?? colors.neutral.light}
       secureTextEntry={!showPassword}
     />
