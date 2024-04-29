@@ -6,6 +6,7 @@ import LoginScreen from '@/screens/auth/LoginScreen';
 import SignUpScreen from '@/screens/auth/SignUpScreen';
 import ForgotPasswordScreen from '@/screens/auth/ForgotPasswordScreen';
 import ChangePasswordScreen from '@/screens/auth/ChangePasswordScreen';
+import SuccessChangePasswordScreen from '@/screens/auth/SuccessChangePassword';
 
 // Stack Params List
 type AuthStackParamList = {
@@ -14,6 +15,7 @@ type AuthStackParamList = {
   SignUp: undefined;
   ForgotPassword: undefined;
   ChangePassword: undefined;
+  SuccessChangePassword: undefined;
 };
 
 export type OnBoardingNavProps = NativeStackScreenProps<AuthStackParamList, 'Onboarding'>;
@@ -21,6 +23,10 @@ export type LoginNavProps = NativeStackScreenProps<AuthStackParamList, 'Login'>;
 export type SignUpNavProps = NativeStackScreenProps<AuthStackParamList, 'SignUp'>;
 export type ForgotPasswordNavProps = NativeStackScreenProps<AuthStackParamList, 'ForgotPassword'>;
 export type ChangePasswordNavProps = NativeStackScreenProps<AuthStackParamList, 'ChangePassword'>;
+export type SuccessChangePasswordNavProps = NativeStackScreenProps<
+  AuthStackParamList,
+  'SuccessChangePassword'
+>;
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 export default function AuthStack() {
@@ -65,6 +71,14 @@ export default function AuthStack() {
           title: 'Change Password',
           headerShadowVisible: false,
           headerTitleStyle: { fontWeight: 'bold' },
+        }}
+      />
+      <Stack.Screen
+        name="SuccessChangePassword"
+        component={SuccessChangePasswordScreen}
+        options={{
+          headerShadowVisible: false,
+          title: '',
         }}
       />
     </Stack.Navigator>

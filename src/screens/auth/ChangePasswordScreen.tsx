@@ -1,6 +1,7 @@
 import MainButton from '@/components/elements/buttons/MainButton';
 import InputPassword from '@/components/elements/form/input/InputPassword';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
+import { ChangePasswordNavProps } from '@/navigators/AuthStack';
 import { colors } from '@/styles/color';
 import { getFontSize } from '@/utils/getFontSize';
 import { useState } from 'react';
@@ -8,7 +9,7 @@ import { StatusBar, StyleSheet, Text } from 'react-native';
 import { Card } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const ChangePasswordScreen = () => {
+const ChangePasswordScreen = ({ navigation }: ChangePasswordNavProps) => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   return (
@@ -32,7 +33,10 @@ const ChangePasswordScreen = () => {
             value={repeatPassword}
             onChangeText={(val) => setRepeatPassword(val)}
           />
-          <MainButton style={{ marginTop: verticalScale(32) }} onPress={() => {}}>
+          <MainButton
+            style={{ marginTop: verticalScale(32) }}
+            onPress={() => navigation.navigate('SuccessChangePassword')}
+          >
             Change Password
           </MainButton>
         </Card.Content>
