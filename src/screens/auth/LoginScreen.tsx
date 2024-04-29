@@ -33,7 +33,10 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
             onChangeText={(val) => setEmail(val)}
           />
           <InputPassword value={password} onChangeText={(val) => setPassword(val)} />
-          <TouchableOpacity style={{ alignSelf: 'flex-end' }} onPress={() => {}}>
+          <TouchableOpacity
+            style={{ alignSelf: 'flex-end', marginTop: verticalScale(8) }}
+            onPress={() => navigation.navigate('ForgotPassword')}
+          >
             <Text style={styles.forgotPasswordText}>Forgot your password ?</Text>
           </TouchableOpacity>
 
