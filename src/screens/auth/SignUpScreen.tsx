@@ -72,7 +72,7 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
             </Text>
             <Text
               style={{ color: colors.primary.main, fontWeight: '700' }}
-              onPress={() => navigation.navigate('SignUp')}
+              onPress={() => navigation.navigate('Login')}
             >
               Sign In
             </Text>
