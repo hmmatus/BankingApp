@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../../styles/color';
 import { Button, useTheme } from 'react-native-paper';
@@ -9,6 +9,7 @@ import { OnBoardingNavProps } from '@/navigators/AuthStack';
 const OnboardingScreen = ({ navigation }: OnBoardingNavProps) => {
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor={colors.primary.main} />
       <View>
         <Button
           mode="contained"
@@ -16,7 +17,7 @@ const OnboardingScreen = ({ navigation }: OnBoardingNavProps) => {
           style={[styles.buttonBordered, { borderColor: colors.white, marginBottom: 16 }]}
           onPress={() => navigation.navigate('Login')}
         >
-          Log in
+          Sign In
         </Button>
         <Button
           mode="outlined"
@@ -25,7 +26,7 @@ const OnboardingScreen = ({ navigation }: OnBoardingNavProps) => {
           labelStyle={styles.buttonText}
           onPress={() => navigation.navigate('SignUp')}
         >
-          Sign in
+          Sign Up
         </Button>
       </View>
     </SafeAreaView>

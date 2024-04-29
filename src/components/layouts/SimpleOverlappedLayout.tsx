@@ -1,6 +1,6 @@
 import { colors } from '@/styles/color';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
 
 interface SimpleOverlappedLayoutProps {
@@ -9,6 +9,7 @@ interface SimpleOverlappedLayoutProps {
 const SimpleOverlappedLayout = ({ children }: SimpleOverlappedLayoutProps) => {
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor={colors.primary.main} />
       <View style={styles.overlappedContainer}>{children}</View>
     </View>
   );

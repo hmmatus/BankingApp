@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SimpleOverlappedLayout from '@/components/layous/SimpleOverlappedLayout';
+import SimpleOverlappedLayout from '@/components/layouts/SimpleOverlappedLayout';
 import { colors } from '@/styles/color';
 import { getFontSize } from '@/utils/getFontSize';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -11,6 +11,7 @@ import InputText from '@/components/elements/form/input/InputText';
 import InputPassword from '@/components/elements/form/input/InputPassword';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
 import { authStyles } from './styles/authStyles';
+import MainButton from '@/components/elements/buttons/MainButton';
 
 const LoginScreen = ({ navigation }: LoginNavProps) => {
   const [email, setEmail] = useState('');
@@ -36,15 +37,13 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
             <Text style={styles.forgotPasswordText}>Forgot your password ?</Text>
           </TouchableOpacity>
 
-          <Button
-            mode="contained"
+          <MainButton
             onPress={() => {}}
-            style={{ borderRadius: 16, marginTop: verticalScale(16) }}
+            style={{ marginTop: verticalScale(16) }}
             contentStyle={{ paddingVertical: verticalScale(5) }}
-            labelStyle={{ fontSize: getFontSize(16), color: colors.white }}
           >
             Sign in
-          </Button>
+          </MainButton>
           <View style={[authStyles.imageContainer, { marginVertical: verticalScale(24) }]}>
             <FingerprintImage />
           </View>
