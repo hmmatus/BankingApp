@@ -1,4 +1,4 @@
-import SimpleOverlappedLayout from '@/components/layous/SimpleOverlappedLayout';
+import SimpleOverlappedLayout from '@/components/layouts/SimpleOverlappedLayout';
 import { StyleSheet, View, Text } from 'react-native';
 import { authStyles } from './styles/authStyles';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
@@ -7,8 +7,12 @@ import InputText from '@/components/elements/form/input/InputText';
 import InputPassword from '@/components/elements/form/input/InputPassword';
 import { useState } from 'react';
 import TermsCheckbox from '@/components/elements/form/checkbox/TermsCheckbox';
+import MainButton from '@/components/elements/buttons/MainButton';
+import { getFontSize } from '@/utils/getFontSize';
+import { colors } from '@/styles/color';
+import { SignUpNavProps } from '@/navigators/AuthStack';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({ navigation }: SignUpNavProps) => {
   const [username, setUsername] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -43,9 +47,36 @@ const SignUpScreen = () => {
             style={{ marginBottom: verticalScale(16) }}
           />
           <TermsCheckbox
+            label=""
+            containerStyle={{ marginVertical: verticalScale(16) }}
             status={checked ? 'checked' : 'unchecked'}
             onPress={() => setChecked(!checked)}
           />
+          <MainButton
+            onPress={() => {}}
+            style={{ marginTop: verticalScale(4) }}
+            contentStyle={{ paddingVertical: verticalScale(5) }}
+          >
+            Sign up
+          </MainButton>
+          <View
+            style={{
+              alignItems: 'center',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              marginTop: verticalScale(8),
+            }}
+          >
+            <Text style={{ fontSize: getFontSize(12), color: colors.neutral.main }}>
+              Have an account?{' '}
+            </Text>
+            <Text
+              style={{ color: colors.primary.main, fontWeight: '700' }}
+              onPress={() => navigation.navigate('SignUp')}
+            >
+              Sign In
+            </Text>
+          </View>
         </View>
       </View>
     </SimpleOverlappedLayout>

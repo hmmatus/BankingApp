@@ -2,23 +2,26 @@ import { horizontalScale } from '@/helpers/metrics';
 import { colors } from '@/styles/color';
 import { getFontSize } from '@/utils/getFontSize';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ViewProps } from 'react-native';
 import { Checkbox, CheckboxItemProps, CheckboxProps } from 'react-native-paper';
 
-const TermsCheckbox = (props: CheckboxProps) => {
+interface TermsCheckboxProps extends CheckboxItemProps {
+  containerStyle?: ViewProps['style'];
+}
+const TermsCheckbox = (props: TermsCheckboxProps) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, props.containerStyle]}>
       <Checkbox {...props} />
       <View>
         <Text style={styles.text}>
-          {`By creating an account your aggree ${'\n'} to our `}
+          {`By creating an account your aggree${'\n'} to our `}
           <Text
             style={[
               styles.text,
-              { color: colors.primary.main, fontWeight: '500', paddingLeft: horizontalScale(16) },
+              { color: colors.primary.main, fontWeight: '700', paddingLeft: horizontalScale(16) },
             ]}
           >
-            Term and Condtions
+            Term and Conditions
           </Text>
         </Text>
       </View>
