@@ -1,5 +1,5 @@
 import SimpleOverlappedLayout from '@/components/layouts/SimpleOverlappedLayout';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { authStyles } from './styles/authStyles';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
 import SignUpLogo from '@/assets/images/signup-logo.svg';
@@ -19,7 +19,7 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
   const [checked, setChecked] = useState(false);
   return (
     <SimpleOverlappedLayout>
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Text style={authStyles.title}>Welcome to us,</Text>
         <Text style={authStyles.subtitle}>Hello there, create New account</Text>
         <View style={[authStyles.imageContainer, { marginTop: verticalScale(48) }]}>
@@ -64,7 +64,7 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
               alignItems: 'center',
               flexDirection: 'row',
               justifyContent: 'center',
-              marginTop: verticalScale(8),
+              marginVertical: verticalScale(8),
             }}
           >
             <Text style={{ fontSize: getFontSize(12), color: colors.neutral.main }}>
@@ -78,7 +78,7 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
             </Text>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </SimpleOverlappedLayout>
   );
 };
@@ -86,6 +86,7 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: horizontalScale(16),
+    paddingBottom: verticalScale(16),
   },
 });
 

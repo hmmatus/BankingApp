@@ -1,4 +1,4 @@
-import { verticalScale } from '@/helpers/metrics';
+import { horizontalScale, verticalScale } from '@/helpers/metrics';
 import { colors } from '@/styles/color';
 import { getFontSize } from '@/utils/getFontSize';
 import { StyleSheet } from 'react-native';
@@ -16,7 +16,7 @@ export const authStyles = StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    maxHeight: '40%',
+    height: verticalScale(175),
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: verticalScale(16),

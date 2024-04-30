@@ -5,7 +5,6 @@ import { getFontSize } from '@/utils/getFontSize';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LoginImage from '@/assets/images/login-logo.svg';
 import FingerprintImage from '@/assets/images/fingerprint.svg';
-import { Button } from 'react-native-paper';
 import { LoginNavProps } from '@/navigators/AuthStack';
 import InputText from '@/components/elements/form/input/InputText';
 import InputPassword from '@/components/elements/form/input/InputPassword';
@@ -22,7 +21,7 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
         <Text style={authStyles.title}>Welcome Back</Text>
         <Text style={authStyles.subtitle}>Hello there, sign in to continue</Text>
         <View style={authStyles.imageContainer}>
-          <LoginImage width={horizontalScale(213)} height={verticalScale(175)} />
+          <LoginImage width={'100%'} height={'100%'} />
         </View>
         <View>
           <InputText
@@ -47,8 +46,10 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
           >
             Sign in
           </MainButton>
-          <View style={[authStyles.imageContainer, { marginVertical: verticalScale(24) }]}>
-            <FingerprintImage />
+          <View
+            style={{ marginVertical: verticalScale(24), width: '100%', height: verticalScale(64) }}
+          >
+            <FingerprintImage width="100%" height="100%" />
           </View>
           <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
             <Text style={{ fontSize: getFontSize(12), color: colors.neutral.main }}>
