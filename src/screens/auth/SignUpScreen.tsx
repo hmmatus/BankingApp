@@ -11,6 +11,7 @@ import MainButton from '@/components/elements/buttons/MainButton';
 import { getFontSize } from '@/utils/getFontSize';
 import { colors } from '@/styles/color';
 import { SignUpNavProps } from '@/navigators/AuthStack';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const SignUpScreen = ({ navigation }: SignUpNavProps) => {
   const [username, setUsername] = useState('');
@@ -19,7 +20,7 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
   const [checked, setChecked] = useState(false);
   return (
     <SimpleOverlappedLayout>
-      <ScrollView contentContainerStyle={styles.container}>
+      <KeyboardAwareScrollView contentContainerStyle={styles.container} extraHeight={100}>
         <Text style={authStyles.title}>Welcome to us,</Text>
         <Text style={authStyles.subtitle}>Hello there, create New account</Text>
         <View style={[authStyles.imageContainer, { marginTop: verticalScale(48) }]}>
@@ -40,8 +41,8 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
             style={{ marginVertical: verticalScale(16) }}
           />
           <InputPassword
-            label="Phone"
-            placeholder="Phone Number"
+            label="Password"
+            placeholder="Password"
             value={password}
             onChangeText={(val) => setPassword(val)}
             style={{ marginBottom: verticalScale(16) }}
@@ -78,7 +79,7 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
             </Text>
           </View>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </SimpleOverlappedLayout>
   );
 };

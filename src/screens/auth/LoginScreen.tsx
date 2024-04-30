@@ -11,13 +11,14 @@ import InputPassword from '@/components/elements/form/input/InputPassword';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
 import { authStyles } from './styles/authStyles';
 import MainButton from '@/components/elements/buttons/MainButton';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const LoginScreen = ({ navigation }: LoginNavProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   return (
     <SimpleOverlappedLayout>
-      <ScrollView contentContainerStyle={styles.container}>
+      <KeyboardAwareScrollView contentContainerStyle={styles.container} extraHeight={40}>
         <Text style={authStyles.title}>Welcome Back</Text>
         <Text style={authStyles.subtitle}>Hello there, sign in to continue</Text>
         <View style={authStyles.imageContainer}>
@@ -63,7 +64,7 @@ const LoginScreen = ({ navigation }: LoginNavProps) => {
             </Text>
           </View>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </SimpleOverlappedLayout>
   );
 };
