@@ -8,7 +8,6 @@ const InputPassword = (props: TextInputProps) => {
     <TextInput
       {...props}
       mode="outlined"
-      label="Password"
       placeholder={props.placeholder ?? 'Password'}
       right={
         <TextInput.Icon

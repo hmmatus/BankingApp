@@ -4,39 +4,48 @@ import { horizontalScale, verticalScale } from '@/helpers/metrics';
 import { ChangePasswordNavProps } from '@/navigators/AuthStack';
 import { colors } from '@/styles/color';
 import { getFontSize } from '@/utils/getFontSize';
-import { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
 import { StatusBar, StyleSheet, Text } from 'react-native';
 import { Card } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { changePasswordValidation } from './validations/changePasswordValidation';
+import ControllerInputPassword from '@/components/elements/form/input/ControllerInputPassword';
+interface ChangePasswordFormFields {
+  password: string;
+  repeatPassword: string;
+}
 const ChangePasswordScreen = ({ navigation }: ChangePasswordNavProps) => {
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, disabled },
+  } = useForm({
+    resolver: yupResolver(changePasswordValidation),
+  });
+  const onSubmit = (data: ChangePasswordFormFields) => {
+    console.log(data);
+    navigation.navigate('SuccessChangePassword');
+  };
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
       <Card mode="elevated" contentStyle={{ padding: 12 }}>
         <Card.Content>
-          <Text style={styles.headerText}>Type your new password</Text>
-          <InputPassword
-            label=""
-            placeholder="Password"
-            value={password}
-            onChangeText={(val) => setPassword(val)}
+          <ControllerInputPassword
+            control={control}
+            name="password"
+            error={errors.password?.message}
+            label="Type your new Password"
           />
-          <Text style={[styles.headerText, { marginTop: verticalScale(16) }]}>
-            Confirm password
-          </Text>
-          <InputPassword
-            label=""
-            placeholder="Repeat Password"
-            value={repeatPassword}
-            onChangeText={(val) => setRepeatPassword(val)}
+          <ControllerInputPassword
+            control={control}
+            name="repeatPassword"
+            error={errors.repeatPassword?.message}
+            label="Repeat Password"
+            containerStyle={{ marginVertical: verticalScale(16) }}
           />
-          <MainButton
-            style={{ marginTop: verticalScale(32) }}
-            onPress={() => navigation.navigate('SuccessChangePassword')}
-          >
+          <MainButton disabled={disabled} onPress={handleSubmit(onSubmit)}>
             Change Password
           </MainButton>
         </Card.Content>

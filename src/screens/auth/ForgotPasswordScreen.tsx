@@ -27,7 +27,6 @@ const ForgotPasswordNumberCard = ({
       <Card.Content>
         <View>
           <InputText
-            label="Phone Number"
             placeholder="Phone Number"
             value={value}
             onChangeText={(val) => onChangeValue(val)}
@@ -44,7 +43,7 @@ const ForgotPasswordNumberCard = ({
 };
 
 const ForgotPasswordCodeCard = ({
-  phoneValue = '789012312',
+  phoneValue,
   value,
   onChangeValue,
   onPressResend,
