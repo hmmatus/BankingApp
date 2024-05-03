@@ -12,12 +12,30 @@ import { getFontSize } from '@/utils/getFontSize';
 import { colors } from '@/styles/color';
 import { SignUpNavProps } from '@/navigators/AuthStack';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { FormSubmitHandler, useForm } from 'react-hook-form';
+import ControllerInputText from '@/components/elements/form/input/ControllerInputText';
+import ControllerInputPassword from '@/components/elements/form/input/ControllerInputPassword';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { signUpSchema } from './validations/signupValidation';
 
+interface SignUpFormFields {
+  username: string;
+  phone: string;
+  password: string;
+}
 const SignUpScreen = ({ navigation }: SignUpNavProps) => {
-  const [username, setUsername] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, disabled },
+  } = useForm({
+    resolver: yupResolver(signUpSchema),
+  });
+  const onSubmit = (data: SignUpFormFields) => {
+    console.log(data);
+    navigation.navigate('Login');
+  };
   return (
     <SimpleOverlappedLayout>
       <KeyboardAwareScrollView contentContainerStyle={styles.container} extraHeight={100}>
@@ -27,25 +45,29 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
           <SignUpLogo width={horizontalScale(213)} height={verticalScale(175)} />
         </View>
         <View>
-          <InputText
+          <ControllerInputText
+            control={control}
             label="Username"
-            placeholder="Username"
-            value={username}
-            onChangeText={(val) => setUsername(val)}
+            name="username"
+            error={errors.username?.message}
+            inputProps={{ placeholder: 'Username' }}
           />
-          <InputText
+          <ControllerInputText
+            control={control}
+            name="phone"
+            error={errors.phone?.message}
             label="Phone"
-            placeholder="Phone Number"
-            value={phone}
-            onChangeText={(val) => setPhone(val)}
-            style={{ marginVertical: verticalScale(16) }}
+            inputProps={{
+              keyboardType: 'phone-pad',
+              placeholder: 'Phone Number',
+            }}
+            containerStyle={{ marginVertical: verticalScale(16) }}
           />
-          <InputPassword
+          <ControllerInputPassword
             label="Password"
-            placeholder="Password"
-            value={password}
-            onChangeText={(val) => setPassword(val)}
-            style={{ marginBottom: verticalScale(16) }}
+            control={control}
+            name="password"
+            error={errors.password?.message}
           />
           <TermsCheckbox
             label=""
@@ -54,7 +76,8 @@ const SignUpScreen = ({ navigation }: SignUpNavProps) => {
             onPress={() => setChecked(!checked)}
           />
           <MainButton
-            onPress={() => {}}
+            disabled={disabled && !checked}
+            onPress={handleSubmit(onSubmit)}
             style={{ marginTop: verticalScale(4) }}
             contentStyle={{ paddingVertical: verticalScale(5) }}
           >

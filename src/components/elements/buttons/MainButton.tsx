@@ -1,4 +1,3 @@
-import { verticalScale } from '@/helpers/metrics';
 import { colors } from '@/styles/color';
 import { getFontSize } from '@/utils/getFontSize';
 import { Button, ButtonProps } from 'react-native-paper';
