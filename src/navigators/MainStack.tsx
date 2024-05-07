@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator<MainStackParamList>();
 export default function MainStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Tabs" component={TabsNav} />
+      <Stack.Screen name="Tabs" component={TabsNav} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

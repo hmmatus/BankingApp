@@ -6,5 +6,6 @@
   "editor.formatOnSave": true,
   "[svg]": {
     "editor.defaultFormatter": "jock.svg"
-  }
+  },
+  "java.compile.nullAnalysis.mode": "disabled"
 }

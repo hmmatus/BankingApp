@@ -17,5 +17,12 @@ export const colors = {
     warning: 'yellow',
     success: 'green',
   },
+  semantic: {
+    link: '#FB6B18',
+    info: '#0890FE',
+    warning: '#FFAF2A',
+    danger: '#FF4267',
+    success: '#52D5BA',
+  },
   white: '#FFFFFF',
 };
