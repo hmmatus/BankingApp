@@ -1,6 +1,6 @@
 import HomeScreen from '@/modules/tab/screens/HomeScreen';
 import SearchScreen from '@/modules/tab/screens/SearchScreen';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabScreenProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomHeader from './config/headers/CustomHeader';
 import TabBar from '@/modules/tab/components/tabBar/TabBar';
 type TabParamList = {
@@ -9,6 +9,8 @@ type TabParamList = {
   Message: undefined;
   Settings: undefined;
 };
+export type SearchNavProps = BottomTabScreenProps<TabParamList, 'Search'>;
+
 const Tabs = createBottomTabNavigator<TabParamList>();
 
 export default function TabsNav() {
