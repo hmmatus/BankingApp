@@ -12,7 +12,7 @@ const CustomHeader = () => {
   const count = 10;
   return (
     <View style={styles.container}>
-      <Avatar.Icon icon="folder" size={30} />
+      <Avatar.Icon icon="zodiac-leo" size={30} />
       <Text style={styles.text}>Hi, {name}</Text>
       <NotificationButton onPress={() => {}} count={count} />
     </View>
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.white,
     fontSize: getFontSize(16),
+    textAlign: 'center',
   },
 });
 

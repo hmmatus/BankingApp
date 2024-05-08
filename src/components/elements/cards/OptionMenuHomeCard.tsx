@@ -26,8 +26,6 @@ const styles = StyleSheet.create({
     height: verticalScale(100),
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: horizontalScale(16),
-    paddingVertical: verticalScale(12),
     margin: 8,
     borderRadius: 16,
     backgroundColor: colors.white,
@@ -44,6 +42,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: getFontSize(12),
     color: colors.neutral.third,
+    marginTop: verticalScale(8),
   },
 });
 

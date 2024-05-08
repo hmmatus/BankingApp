@@ -16,33 +16,15 @@ import { horizontalScale, verticalScale } from '@/helpers/metrics';
 
 const Icon = ({ name, focused }: { name: string; focused: boolean }) => {
   return {
-    Home: (
-      <Home
-        width={20}
-        height={20}
-        style={{ color: focused ? colors.white : colors.neutral.second }}
-      />
-    ),
+    Home: <Home width={20} height={20} color={focused ? colors.white : colors.neutral.second} />,
     Settings: (
-      <Settings
-        width={20}
-        height={20}
-        style={{ color: focused ? colors.white : colors.neutral.second }}
-      />
+      <Settings width={20} height={20} color={focused ? colors.white : colors.neutral.second} />
     ),
     Message: (
-      <Messages
-        width={20}
-        height={20}
-        style={{ color: focused ? colors.white : colors.neutral.second }}
-      />
+      <Messages width={20} height={20} color={focused ? colors.white : colors.neutral.second} />
     ),
     Search: (
-      <Search
-        width={20}
-        height={20}
-        style={{ color: focused ? colors.white : colors.neutral.second }}
-      />
+      <Search width={20} height={20} color={focused ? colors.white : colors.neutral.second} />
     ),
   }[name];
 };
@@ -102,7 +84,7 @@ const TabBar = (props: BottomTabBarProps) => {
             navigation.navigate(route.name, route.params);
           }
         };
-        return <IconButton name={route.name} focused={isFocused} onPress={onPress} />;
+        return <IconButton key={index} name={route.name} focused={isFocused} onPress={onPress} />;
       })}
     </View>
   );
