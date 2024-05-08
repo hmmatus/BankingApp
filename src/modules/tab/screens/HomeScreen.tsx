@@ -1,5 +1,5 @@
-import CreditCardListComponent from '@/components/elements/cards/CreditCardListComponent';
-import OptionMenuHomeCard from '@/components/elements/cards/OptionMenuHomeCard';
+import CreditCardListComponent from '@/modules/tab/components/cards/CreditCardListComponent';
+import OptionMenuHomeCard from '@/modules/tab/components/cards/OptionMenuHomeCard';
 import SimpleOverlappedLayout from '@/components/layouts/SimpleOverlappedLayout';
 import { verticalScale } from '@/helpers/metrics';
 import { colors } from '@/styles/color';

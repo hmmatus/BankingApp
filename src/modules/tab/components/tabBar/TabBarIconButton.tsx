@@ -1,18 +1,11 @@
-import { colors } from '@/styles/color';
-import {
-  StyleSheet,
-  TouchableHighlight,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
-import { Text } from 'react-native-paper';
 import Home from '@/assets/icons/tab/home.svg';
 import Settings from '@/assets/icons/tab/settings.svg';
 import Messages from '@/assets/icons/tab/message.svg';
 import Search from '@/assets/icons/tab/search.svg';
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Text } from 'react-native-paper';
+import { colors } from '@/styles/color';
 
 const Icon = ({ name, focused }: { name: string; focused: boolean }) => {
   return {
@@ -56,39 +49,6 @@ const IconButton = ({
     </TouchableOpacity>
   );
 };
-const TabBar = (props: BottomTabBarProps) => {
-  const { state, descriptors, navigation } = props;
-  return (
-    <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'transparent',
-        height: verticalScale(70),
-        width: '100%',
-        paddingHorizontal: horizontalScale(4),
-      }}
-    >
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const isFocused = state.index === index;
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, route.params);
-          }
-        };
-        return <IconButton key={index} name={route.name} focused={isFocused} onPress={onPress} />;
-      })}
-    </View>
-  );
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -112,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TabBar;
+export default IconButton;

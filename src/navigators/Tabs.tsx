@@ -1,9 +1,8 @@
-import HomeScreen from '@/screens/main/tabs/HomeScreen';
-import SearchScreen from '@/screens/main/tabs/SearchScreen';
+import HomeScreen from '@/modules/tab/screens/HomeScreen';
+import SearchScreen from '@/modules/tab/screens/SearchScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import CustomHeader from './config/headers/CustomHeader';
-import { verticalScale } from '@/helpers/metrics';
-import TabBar from '@/components/elements/icons/TabBar';
+import TabBar from '@/modules/tab/components/tabBar/TabBar';
 type TabParamList = {
   Home: undefined;
   Search: undefined;

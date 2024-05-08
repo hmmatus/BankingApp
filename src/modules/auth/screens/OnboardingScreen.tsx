@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colors } from '../../styles/color';
+import { colors } from '@/styles/color';
 import { Button, useTheme } from 'react-native-paper';
 import { getFontSize } from '@/utils/getFontSize';
 import { OnBoardingNavProps } from '@/navigators/AuthStack';

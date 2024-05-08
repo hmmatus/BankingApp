@@ -1,12 +1,12 @@
 import { NativeStackScreenProps, createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import OnboardingScreen from '../screens/auth/OnboardingScreen';
+import OnboardingScreen from '@/modules/auth/screens/OnboardingScreen';
 import { simpleHeaderOptions } from './config/headers/SimpleHeader';
-import LoginScreen from '@/screens/auth/LoginScreen';
-import SignUpScreen from '@/screens/auth/SignUpScreen';
-import ForgotPasswordScreen from '@/screens/auth/ForgotPasswordScreen';
-import ChangePasswordScreen from '@/screens/auth/ChangePasswordScreen';
-import SuccessChangePasswordScreen from '@/screens/auth/SuccessChangePassword';
+import LoginScreen from '@/modules/auth/screens/LoginScreen';
+import SignUpScreen from '@/modules/auth/screens/SignUpScreen';
+import ForgotPasswordScreen from '@/modules/auth/screens/ForgotPasswordScreen';
+import ChangePasswordScreen from '@/modules/auth/screens/ChangePasswordScreen';
+import SuccessChangePasswordScreen from '@/modules/auth/screens/SuccessChangePassword';
 
 // Stack Params List
 type AuthStackParamList = {

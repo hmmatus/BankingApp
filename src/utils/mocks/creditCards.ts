@@ -1,4 +1,4 @@
-import { CreditCardProps } from '@/components/elements/cards/CreditCardComponent';
+import { CreditCardProps } from '@/modules/tab/components/cards/CreditCardComponent';
 import { CardType, CreditCardI } from '@/models/creditCard.model';
 
 export const mockCreditCards: CreditCardI[] = [

@@ -1,4 +1,4 @@
-import NotificationButton from '@/components/elements/buttons/NotificationButton';
+import NotificationButton from '@/modules/tab/components/buttons/NotificationButton';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
 import { colors } from '@/styles/color';
 import { getFontSize } from '@/utils/getFontSize';

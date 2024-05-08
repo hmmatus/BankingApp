@@ -5,7 +5,6 @@ import { getFontSize } from '@/utils/getFontSize';
 import { colors } from '@/styles/color';
 import MainButton from '@/components/elements/buttons/MainButton';
 import { verticalScale } from '@/helpers/metrics';
-import { authStyles } from './styles/authStyles';
 
 const SuccessChangePasswordScreen = () => {
   return (

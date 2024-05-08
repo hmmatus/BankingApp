@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import SimpleOverlappedLayout from '@/components/layouts/SimpleOverlappedLayout';
 import { colors } from '@/styles/color';
 import { getFontSize } from '@/utils/getFontSize';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LoginImage from '@/assets/images/login-logo.svg';
 import FingerprintImage from '@/assets/images/fingerprint.svg';
 import { LoginNavProps } from '@/navigators/AuthStack';
 import InputText from '@/components/elements/form/input/InputText';
 import InputPassword from '@/components/elements/form/input/InputPassword';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
-import { authStyles } from './styles/authStyles';
+import { authStyles } from '../styles/authStyles';
 import MainButton from '@/components/elements/buttons/MainButton';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 

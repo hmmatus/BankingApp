@@ -1,10 +1,8 @@
 import SimpleOverlappedLayout from '@/components/layouts/SimpleOverlappedLayout';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
-import { authStyles } from './styles/authStyles';
+import { authStyles } from '../styles/authStyles';
 import { horizontalScale, verticalScale } from '@/helpers/metrics';
 import SignUpLogo from '@/assets/images/signup-logo.svg';
-import InputText from '@/components/elements/form/input/InputText';
-import InputPassword from '@/components/elements/form/input/InputPassword';
 import { useState } from 'react';
 import TermsCheckbox from '@/components/elements/form/checkbox/TermsCheckbox';
 import MainButton from '@/components/elements/buttons/MainButton';
@@ -16,7 +14,7 @@ import { FormSubmitHandler, useForm } from 'react-hook-form';
 import ControllerInputText from '@/components/elements/form/input/ControllerInputText';
 import ControllerInputPassword from '@/components/elements/form/input/ControllerInputPassword';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signUpSchema } from './validations/signupValidation';
+import { signUpSchema } from '../utils/signupValidation';
 
 interface SignUpFormFields {
   username: string;
