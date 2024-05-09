@@ -15,7 +15,7 @@ const HomeScreen = () => {
         keyExtractor={(_, index) => index.toString()}
         numColumns={3}
         style={styles.container}
-        ListHeaderComponent={<CreditCardListComponent cards={mockCreditCards} />}
+        ListHeaderComponent={<CreditCardListComponent cards={mockCreditCards.reverse()} />}
         ListHeaderComponentStyle={{ marginBottom: verticalScale(20) }}
         renderItem={({ item }) => <OptionMenuHomeCard item={item} onPress={() => {}} />}
       />
