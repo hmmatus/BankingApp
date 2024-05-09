@@ -7,7 +7,7 @@ import { verticalScale } from '@/helpers/metrics';
 import { SearchNavProps } from '@/navigators/Tabs';
 const itemsOptionsList = [
   {
-    id: 'Branch',
+    id: 'BranchMap',
     title: 'Branch',
     description: 'Search for branch',
     image: <Branch />,
@@ -41,7 +41,9 @@ const SearchScreen = ({ navigation, route }: SearchNavProps) => {
         <SearchOptionComponent
           style={{ marginBottom: verticalScale(12) }}
           {...item}
-          onPress={() => {}}
+          onPress={() => {
+            navigation.getParent()?.navigate(item.id);
+          }}
         />
       )}
     />
