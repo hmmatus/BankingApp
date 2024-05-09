@@ -13,7 +13,11 @@ export default function MainStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Tabs" component={TabsNav} options={{ headerShown: false }} />
-      <Stack.Screen name="BranchMap" component={BranchMapScreen} />
+      <Stack.Screen
+        name="BranchMap"
+        options={{ headerTitle: 'Branch' }}
+        component={BranchMapScreen}
+      />
     </Stack.Navigator>
   );
 }
