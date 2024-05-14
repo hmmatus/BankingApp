@@ -9,6 +9,7 @@ interface UseLocationProps {
 }
 export default function UseLocation({ onError }: UseLocationProps) {
   const [locationDetails, setLocationDetails] = useState<GeolocationResponse>();
+  const [loadingLocation, setLoadingLocation] = useState(false);
 
   const requestLocationPermission = useCallback(async () => {
     Geolocation.requestAuthorization(
@@ -23,13 +24,16 @@ export default function UseLocation({ onError }: UseLocationProps) {
     );
   }, [onError]);
   const getCurrentPosition = async () => {
+    setLoadingLocation(true);
     Geolocation.getCurrentPosition(
       (info) => {
         setLocationDetails(info);
+        setLoadingLocation(false);
       },
       (error) => {
         if (onError) {
           onError(error);
+          setLoadingLocation(false);
         }
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
@@ -39,5 +43,5 @@ export default function UseLocation({ onError }: UseLocationProps) {
     requestLocationPermission();
   }, []);
 
-  return { locationDetails, requestLocationPermission };
+  return { locationDetails, requestLocationPermission, loadingLocation };
 }
