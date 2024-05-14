@@ -11,7 +11,7 @@ const BottomSheetContainer = React.forwardRef<BottomSheet, BottomSheetContainerP
   (props, ref) => {
     const { children } = props;
     return (
-      <BottomSheet enablePanDownToClose ref={ref} snapPoints={['60%', '40%']}>
+      <BottomSheet enablePanDownToClose ref={ref} snapPoints={['60%']}>
         <BottomSheetView style={styles.container}>{children}</BottomSheetView>
       </BottomSheet>
     );
