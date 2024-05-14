@@ -73,6 +73,10 @@ const BranchMapScreen = () => {
     });
     bottomRef.current?.close();
   };
+  const handleSearch = (value: string) => {
+    const newFilteredList = markerList.filter((item) => item.title.includes(value));
+    setFilteredData(newFilteredList);
+  };
   if (loadingLocation) {
     return (
       <View>
@@ -114,7 +118,20 @@ const BranchMapScreen = () => {
             placeholder="Search Branch"
             value={searchValue}
             onChangeText={(value) => setSearchValue(value)}
-            right={<TextInput.Icon icon="close" color={colors.neutral.main} size={24} />}
+            onEndEditing={() => handleSearch(searchValue)}
+            right={
+              searchValue.length > 0 && (
+                <TextInput.Icon
+                  icon="close"
+                  color={colors.neutral.main}
+                  size={24}
+                  onPress={() => {
+                    handleSearch('');
+                    setSearchValue('');
+                  }}
+                />
+              )
+            }
           />
           <FlatList
             data={filteredData}
