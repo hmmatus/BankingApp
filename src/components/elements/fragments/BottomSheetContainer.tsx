@@ -10,12 +10,8 @@ interface BottomSheetContainerProps {
 const BottomSheetContainer = React.forwardRef<BottomSheet, BottomSheetContainerProps>(
   (props, ref) => {
     const { children } = props;
-    // callbacks
-    const handleSheetChanges = useCallback((index: number) => {
-      console.log('handleSheetChanges', index);
-    }, []);
     return (
-      <BottomSheet ref={ref} onChange={handleSheetChanges} snapPoints={['50%', '40%']}>
+      <BottomSheet enablePanDownToClose ref={ref} snapPoints={['60%', '40%']}>
         <BottomSheetView style={styles.container}>{children}</BottomSheetView>
       </BottomSheet>
     );
