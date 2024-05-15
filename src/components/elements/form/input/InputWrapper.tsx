@@ -4,7 +4,7 @@ import { getFontSize } from '@/utils/getFontSize';
 import { StyleSheet, Text, View } from 'react-native';
 import { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils';
 
-interface InputWrapperI {
+export interface InputWrapperI {
   label?: string;
   error?: string;
   children: JSX.Element;
