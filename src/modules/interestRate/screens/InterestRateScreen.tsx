@@ -1,6 +1,6 @@
 import { colors } from '@/styles/color';
 import { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StatusBar, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { InterestRateP, mockRatesData } from '../utils/ratesData';
 import { typography } from '@/styles/typography';
@@ -29,6 +29,8 @@ const InterestRateScreen = () => {
   const [data] = useState(mockRatesData);
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
+
       <FlatList
         data={data}
         ListHeaderComponent={<RateHeader />}

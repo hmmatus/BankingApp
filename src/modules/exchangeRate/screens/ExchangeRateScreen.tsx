@@ -1,5 +1,5 @@
 import { colors } from '@/styles/color';
-import { StyleSheet, View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { mockExchangeData } from '../utils/mockData';
 import ExchangeRateCard from '../components/cards/ExchangeRateCard';
@@ -19,6 +19,7 @@ const ListHeaderComponent = () => {
 const ExchangeRateScreen = () => {
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={colors.white} />
       <FlatList
         data={mockExchangeData}
         renderItem={({ item }) => <ExchangeRateCard exchangeRate={item} />}

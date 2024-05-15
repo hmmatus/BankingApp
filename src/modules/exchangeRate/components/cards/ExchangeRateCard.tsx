@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
   itemText: {
     ...typography.body1,
+    textAlign: 'center',
   },
 });
 
