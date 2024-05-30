@@ -42,7 +42,6 @@ const TransferScreen = () => {
     }
   };
   const selectBeneficiary = (item: BeneficiaryP) => {
-    console.log('🚀 ~ selectBeneficiary ~ item:', item);
     setBeneficiary(item);
   };
   return (
