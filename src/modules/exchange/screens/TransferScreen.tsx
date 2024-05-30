@@ -1,9 +1,9 @@
 import ScreenWrapper from '@/components/layouts/ScreenWrapper';
 import { colors } from '@/styles/color';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import InputSelectCard from '../components/inputs/InputSelectCard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { typography } from '@/styles/typography';
 import {
   TransactionItemP,
@@ -12,10 +12,15 @@ import {
 } from '../utils/mocks/transactionTypes';
 import TransactionTypeCard from '../components/cards/TransactionTypeCard';
 import { verticalScale } from '@/helpers/metrics';
+import BeneficiaryCard from '../components/cards/BeneficiaryCard';
+import { BeneficiaryP, beneficiaryList } from '../utils/mocks/beneficiaryList';
+import AddNewBeneficiaryCard from '../components/cards/AddNewBeneficiaryCard';
+import TransferForm from '../components/forms/transfer/TransferForm';
 
 const TransferScreen = () => {
   const [selectedCard, setSelectedCard] = useState('');
   const [operation, setOperation] = useState({} as TransactionItemP);
+  const [beneficiary, setBeneficiary] = useState({} as BeneficiaryP);
   const cardsList = [
     {
       label: 'Mastercard',
@@ -36,35 +41,68 @@ const TransferScreen = () => {
       setOperation(item);
     }
   };
+  const selectBeneficiary = (item: BeneficiaryP) => {
+    console.log('🚀 ~ selectBeneficiary ~ item:', item);
+    setBeneficiary(item);
+  };
   return (
-    <ScreenWrapper barStyle="dark-content" statusBarColor={colors.white}>
-      <View style={styles.container}>
-        <InputSelectCard selectedValue={selectedCard} items={cardsList} onChangeValue={() => {}} />
-        <Text style={styles.availableText}>{`Available Balance: ${balance.toLocaleString()}`}</Text>
-        <Text style={styles.listHeaderText}>Choose transaction</Text>
-        <FlatList
-          horizontal
-          data={mockTransactionTypes}
-          renderItem={({ item, index }) => (
-            <TransactionTypeCard
-              key={index}
-              selected={item.value === operation.value}
-              label={item.label}
-              icon={item.icon}
-              onPress={() => selectTransactionType(item)}
-            />
-          )}
-          ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
-          style={{ maxHeight: verticalScale(130) }}
-        />
-        <View style={styles.flexSpaceBetween}>
-          <Text style={styles.listHeaderText}>Choose beneficiary</Text>
-          <Text style={[styles.listHeaderText, { color: colors.primary.main }]}>
-            {operation.label}
-          </Text>
+    <ScrollView>
+      <ScreenWrapper barStyle="dark-content" statusBarColor={colors.white}>
+        <View style={styles.container}>
+          <InputSelectCard
+            selectedValue={selectedCard}
+            items={cardsList}
+            onChangeValue={() => {}}
+          />
+          <Text
+            style={styles.availableText}
+          >{`Available Balance: ${balance.toLocaleString()}`}</Text>
+          <Text style={styles.listHeaderText}>Choose transaction</Text>
+          <FlatList
+            horizontal
+            data={mockTransactionTypes}
+            renderItem={({ item, index }) => (
+              <TransactionTypeCard
+                key={index}
+                selected={item.value === operation.value}
+                label={item.label}
+                icon={item.icon}
+                onPress={() => selectTransactionType(item)}
+              />
+            )}
+            ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
+            style={{ height: verticalScale(130) }}
+          />
+          <View style={styles.flexSpaceBetween}>
+            <Text style={styles.listHeaderText}>Choose beneficiary</Text>
+            <Text style={[styles.listHeaderText, { color: colors.primary.main }]}>
+              Find beneficiary
+            </Text>
+          </View>
+          <FlatList
+            horizontal
+            data={beneficiaryList}
+            ListHeaderComponent={
+              <View>
+                <AddNewBeneficiaryCard onPress={() => {}} />
+              </View>
+            }
+            renderItem={({ item, index }) => (
+              <BeneficiaryCard
+                key={index}
+                selected={item.id === beneficiary.id}
+                name={item.name}
+                img={item.img}
+                onPress={() => selectBeneficiary(item)}
+              />
+            )}
+            ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
+            style={{ height: verticalScale(130), marginVertical: verticalScale(10) }}
+          />
+          <TransferForm onSubmit={(data) => {}} />
         </View>
-      </View>
-    </ScreenWrapper>
+      </ScreenWrapper>
+    </ScrollView>
   );
 };
 
