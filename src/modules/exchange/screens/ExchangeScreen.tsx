@@ -9,7 +9,8 @@ import { verticalScale } from '@/helpers/metrics';
 import SelectArrows from '@/assets/icons/exchange/arrow-change.svg';
 import { Text } from 'react-native-paper';
 import { typography } from '@/styles/typography';
-const ExchangeScreen = () => {
+import { ExchangeScreenProps } from '@/navigators/ExchangeStack';
+const ExchangeScreen = ({ navigation }: ExchangeScreenProps) => {
   const [exchangeData, setExchangeData] = useState({
     from: {
       value: '',
@@ -20,6 +21,10 @@ const ExchangeScreen = () => {
       currency: 'EUR',
     },
   });
+
+  const handleSubmit = () => {
+    navigation.navigate('Transfer');
+  };
 
   return (
     <ScreenWrapper
@@ -65,7 +70,7 @@ const ExchangeScreen = () => {
             style={styles.text}
           >{`1 ${exchangeData.from.currency} = ${exchangeData.to.value} ${exchangeData.to.currency}`}</Text>
         </View>
-        <MainButton onPress={() => {}} style={{ marginTop: 20 }}>
+        <MainButton onPress={handleSubmit} style={{ marginTop: 20 }}>
           Exchange
         </MainButton>
       </View>
