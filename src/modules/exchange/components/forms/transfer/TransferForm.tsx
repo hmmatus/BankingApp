@@ -8,8 +8,9 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { transferSchema } from './transferValidation';
 import MainButton from '@/components/elements/buttons/MainButton';
 import CustomCheckbox from '@/components/elements/form/checkbox/CustomCheckbox';
+import { verticalScale } from '@/helpers/metrics';
 
-interface TransferFormDataI {
+export interface TransferFormDataI {
   amount: string;
   content: string;
   card: string;
@@ -37,12 +38,14 @@ const TransferForm = (props: TransferFormProps) => {
         label="Name"
         name="name"
         error={errors.name?.message}
+        containerStyle={styles.input}
       />
       <ControllerInputText
         control={control}
         label="Card"
         name="card"
         error={errors.card?.message}
+        containerStyle={styles.input}
       />
       <ControllerInputText
         control={control}
@@ -50,12 +53,14 @@ const TransferForm = (props: TransferFormProps) => {
         name="amount"
         inputProps={{ keyboardType: 'numeric' }}
         error={errors.amount?.message}
+        containerStyle={styles.input}
       />
       <ControllerInputText
         control={control}
         label="Content"
         name="content"
         error={errors.content?.message}
+        containerStyle={styles.input}
       />
       <CustomCheckbox
         label=""
@@ -85,6 +90,9 @@ const styles = StyleSheet.create({
     shadowRadius: 2.62,
 
     elevation: 4,
+  },
+  input: {
+    marginBottom: verticalScale(12),
   },
 });
 

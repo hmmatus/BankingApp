@@ -10,7 +10,7 @@ type MainStackParamList = {
   BranchMap: undefined;
   InterestRate: undefined;
   ExchangeRate: undefined;
-  Exchange: undefined;
+  ExchangeStack: undefined;
 };
 export type BranchMapScreenProps = NativeStackScreenProps<MainStackParamList, 'BranchMap'>;
 const Stack = createNativeStackNavigator<MainStackParamList>();
@@ -34,7 +34,11 @@ export default function MainStack() {
         component={ExchangeRateScreen}
         options={{ headerTitle: 'Exchange rate', headerShadowVisible: false }}
       />
-      <Stack.Screen name={'Exchange'} component={ExchangeStack} options={{ headerShown: false }} />
+      <Stack.Screen
+        name={'ExchangeStack'}
+        component={ExchangeStack}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }

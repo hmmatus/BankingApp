@@ -26,7 +26,7 @@ const itemsOptionsList = [
     image: <ExchangeRate />,
   },
   {
-    id: 'Exchange',
+    id: 'ExchangeStack',
     title: 'Exchange',
     description: 'Exchange amount of money',
     image: <ExchangeRate />,

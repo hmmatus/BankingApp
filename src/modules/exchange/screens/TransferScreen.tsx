@@ -15,7 +15,7 @@ import { verticalScale } from '@/helpers/metrics';
 import BeneficiaryCard from '../components/cards/BeneficiaryCard';
 import { BeneficiaryP, beneficiaryList } from '../utils/mocks/beneficiaryList';
 import AddNewBeneficiaryCard from '../components/cards/AddNewBeneficiaryCard';
-import TransferForm from '../components/forms/transfer/TransferForm';
+import TransferForm, { TransferFormDataI } from '../components/forms/transfer/TransferForm';
 
 const TransferScreen = () => {
   const [selectedCard, setSelectedCard] = useState('');
@@ -43,6 +43,10 @@ const TransferScreen = () => {
   };
   const selectBeneficiary = (item: BeneficiaryP) => {
     setBeneficiary(item);
+  };
+
+  const handleSubmit = (data: TransferFormDataI) => {
+    console.log(data);
   };
   return (
     <ScrollView>
@@ -98,7 +102,7 @@ const TransferScreen = () => {
             ItemSeparatorComponent={() => <View style={{ width: 12 }} />}
             style={{ height: verticalScale(130), marginVertical: verticalScale(10) }}
           />
-          <TransferForm onSubmit={(data) => {}} />
+          <TransferForm onSubmit={handleSubmit} />
         </View>
       </ScreenWrapper>
     </ScrollView>
